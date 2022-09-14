@@ -1,8 +1,28 @@
-import Buttons from './components/ui/buttons/Buttons'
-import GameCard from './components/ui/gameCard/GameCard'
+import { useEffect, useState } from 'react'
+import CreateAd from './components/CreateAd/CreateAd'
+import GameCard from './components/gameCard/GameCard'
 import logoNLW from '/assets/logo-nlw-esports.svg'
 
+interface IGame {
+  id: string
+  title: string
+  bannerUrl: string
+  _count: {
+    ads: number
+  }
+}
+
 function App() {
+  const [games, setGames] = useState<IGame[]>([])
+
+  useEffect(() => {
+    fetch('http://localhost:3333/games')
+      .then(response => response.json())
+      .then(data => setGames(data))
+  }, [])
+
+  console.log(games)
+
   return (
     <div className='main__wrapper'>
       <img src={logoNLW} alt='' />
@@ -12,27 +32,18 @@ function App() {
 
       {/* games grid */}
       <div className='grid__games'>
-        <GameCard img='/assets/game_1.png' title='World of Warcraft' ads={4} />
-        <GameCard img='/assets/game_2.png' title='League of Legends' ads={4} />
-        <GameCard img='/assets/game_3.png' title='Dota 2' ads={4} />
-        <GameCard img='/assets/game_4.png' title='Counter Strike' ads={4} />
-        <GameCard img='/assets/game_5.png' title='Apex Legends' ads={4} />
-        <GameCard img='/assets/game_6.png' title='Fortnite' ads={4} />
+        {games.map(game => (
+          <GameCard
+            key={game.id}
+            img={game.bannerUrl}
+            title={game.title}
+            ads={game._count.ads}
+          />
+        ))}
       </div>
 
       {/* Card publi */}
-      <div className='card__publi__grad'>
-        <div className='card__publi'>
-          <div>
-            <h2 className='card__publi__title'>Não encontrou seu duo?</h2>
-            <p className='card__publi__subtitle'>
-              Publique um anúncio para encontrar novos players!
-            </p>
-          </div>
-          {/* Button Variant */}
-          <Buttons variant='lupa' />
-        </div>
-      </div>
+      <CreateAd />
     </div>
   )
 }
