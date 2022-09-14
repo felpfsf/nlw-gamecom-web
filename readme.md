@@ -27,6 +27,7 @@ W.I.P.
 - React TypeScript
 - [React Router Dom](https://www.npmjs.com/package/react-router-dom)
 - [TailwindCSS](https://tailwindcss.com/docs/guides/create-react-app)
+- [RadixUI](https://www.radix-ui.com)
 - [Vite Bundler](https://vitejs.dev/)
 
 **Back-end:**

@@ -13,7 +13,7 @@ module.exports = {
       colors: {
         nlw: {
           clr_background: '#121214',
-          clr_pub_bg: '#2A2634'
+          clr_pub_bg: '#2A2634',
         }
       },
       fontFamily: {
