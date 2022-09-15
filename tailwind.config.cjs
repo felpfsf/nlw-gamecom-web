@@ -14,6 +14,8 @@ module.exports = {
         nlw: {
           clr_background: '#121214',
           clr_pub_bg: '#2A2634',
+          clr_input_bg: '#18181B',
+          clr_input_txt: '#71717A'
         }
       },
       fontFamily: {

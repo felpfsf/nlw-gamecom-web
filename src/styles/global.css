@@ -52,10 +52,34 @@
   .card__publi__subtitle {
     @apply text-zinc-400 block;
   }
+
+  .dialog__content {
+  @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] py-8 px-10 text-white rounded-lg bg-nlw-clr_pub_bg shadow-black/25;
+  }
 }
 
 @layer utilities {
-  .card__publi__button {
-    @apply py-3 px-4 rounded-md bg-violet-500 hover:bg-violet-700 ease-in duration-200 flex gap-3;
+  .button {
+    @apply py-3 px-4 rounded-md flex gap-3;
+  }
+
+  .button__violet {
+    @apply bg-violet-500 hover:bg-violet-700 ease-in duration-200;
+  }
+
+  .button__zinc {
+    @apply bg-zinc-500 hover:bg-zinc-700 ease-in duration-200 font-semibold;
+  }
+
+  .form__input {
+    @apply text-sm text-nlw-clr_input_txt py-3 px-4 rounded bg-nlw-clr_input_bg placeholder:text-nlw-clr_input_txt;
+  }
+
+  .form__label {
+    @apply font-semibold;
+  }
+
+  .input__div__flex {
+  @apply flex flex-col gap-2;
   }
 }

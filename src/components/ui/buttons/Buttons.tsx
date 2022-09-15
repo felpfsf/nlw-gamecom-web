@@ -10,21 +10,19 @@ const Buttons = (props: IButtonsProps) => {
   return (
     <>
       {props.variant === 'lupa' ? (
-        <Dialog.Trigger className='card__publi__button'>
+        <Dialog.Trigger className='button button__violet'>
           <img src={iconLupa} alt='' />
           Publicar anúncio
         </Dialog.Trigger>
       ) : null}
       {props.variant === 'joystick' ? (
-        <button className='card__publi__button'>
+        <button type='submit' className='button button__violet font-semibold'>
           <img src={iconJoystick} alt='' />
           Encontrar duo
         </button>
       ) : null}
       {props.variant === 'cancelar' ? (
-        <button className='card__publi__button'>
-          Cancelar
-        </button>
+        <button type='button' className='button button__zinc'>Cancelar</button>
       ) : null}
     </>
   )
