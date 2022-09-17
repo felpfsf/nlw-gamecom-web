@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react'
 import axios from 'axios'
+import { httpRequest } from '../../api/api'
 
 import * as Dialog from '@radix-ui/react-dialog'
 import * as Checkbox from '@radix-ui/react-checkbox'
@@ -23,10 +24,9 @@ const CreateAdModal = () => {
   const [weekDay, setWeekDay] = useState<string[]>([])
   const [useVoiceChannel, setUseVoiceChannel] = useState<boolean>(false)
 
-  const API_URL = 'http://localhost:3333'
-
   useEffect(() => {
-    axios(`${API_URL}/games`)
+    httpRequest
+      .get('/games')
       .then(response => setGames(response.data))
       .catch(err => console.error(err))
   }, [])
@@ -41,25 +41,23 @@ const CreateAdModal = () => {
 
   async function handleCreateAd(e: FormEvent) {
     e.preventDefault()
-    console.log('form enviado')
+    // console.log('form enviado')
 
     const formData = new FormData(e.target as HTMLFormElement)
     const data = Object.fromEntries(formData)
 
-    console.log(`${API_URL}/games/${data.game}/ads`)
-    console.log(data.game);
-    
+    console.log(`${httpRequest.defaults.baseURL}games/${data.game}/ads`)
 
-    // console.log(data.hourStart, data.hourEnd)
-    // console.log(weekDay)
-    // console.log(useVoiceChannel)
+    console.log(
+      `id: ${data.game}\n name: ${data.name}\n yearsPlaying: ${data.yearsPlaying}\n discord: ${data.discord}\n weekDay: ${weekDay}\n hourStart: ${data.hourStart}, hourEnd: ${data.hourEnd}\n typeof hourEnd: ${typeof(data.hourEnd)}\n useVoiceChannel: ${useVoiceChannel}`
+    )
 
     // if (!data.name) {
     //   return
     // }
 
     try {
-      axios.post(`${API_URL}/games/${data.game}/ads`, {
+      axios.post(`${httpRequest.defaults.baseURL}games/${data.game}/ads`, {
         name: data.name,
         yearsPlaying: Number(data.yearsPlaying),
         discord: data.discord,
@@ -131,7 +129,6 @@ const CreateAdModal = () => {
                 </Select.Content>
               </Select.Portal>
             </Select.Root>
-
           </div>
           <div className='input__div__flex'>
             <label htmlFor='name' className='font-semibold'>

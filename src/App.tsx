@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import axios from 'axios'
+import { httpRequest } from './api/api'
 
 import * as Dialog from '@radix-ui/react-dialog'
 
@@ -25,10 +25,9 @@ function App() {
   const [search, setSearch] = useState('')
   const [searchValue, setSearchValue] = useState('')
 
-  const API_URL = 'http://localhost:3333/games'
 
   useEffect(() => {
-    axios(API_URL)
+    httpRequest.get('games')
       .then(response => setGames(response.data))
       .catch(err => console.error(err))
   }, [])
