@@ -1,8 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
+import axios from 'axios'
+
 import * as Dialog from '@radix-ui/react-dialog'
+
+import logoNLW from '/assets/logo-nlw-esports.svg'
+
 import CreateAd from './components/createAd/CreateAd'
 import GameCard from './components/gameCard/GameCard'
-import logoNLW from '/assets/logo-nlw-esports.svg'
 import CreateAdModal from './components/modal/CreateAdModal'
 import Input from './components/form/Input'
 import Buttons from './components/ui/buttons/Buttons'
@@ -21,12 +25,11 @@ function App() {
   const [search, setSearch] = useState('')
   const [searchValue, setSearchValue] = useState('')
 
+  const API_URL = 'http://localhost:3333/games'
+
   useEffect(() => {
-    fetch('http://localhost:3333/games')
-      .then(response => response.json())
-      .then(data => {
-        setGames(data)
-      })
+    axios(API_URL)
+      .then(response => setGames(response.data))
       .catch(err => console.error(err))
   }, [])
 

@@ -1,14 +1,18 @@
 import { useState } from 'react'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 
-const WeekDays = () => {
+interface IWeekDaysProps{
+  weekDay: string[]
+}
+
+const WeekDays = (props : IWeekDaysProps) => {
   const [weekDay, setWeekDay] = useState<string[]>([])
 
   return (
     <ToggleGroup.Root
       className='pt-2 grid grid-cols-7 gap-1'
       type='multiple'
-      value={weekDay}
+      value={props.weekDay}
       onValueChange={setWeekDay}>
       <ToggleGroup.Item
         className={

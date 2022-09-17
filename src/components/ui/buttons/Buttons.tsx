@@ -4,7 +4,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 
 interface IButtonsProps {
   variant: string
-  onClick: () => void
+  onClick?: () => void
 }
 
 const Buttons = (props: IButtonsProps) => {
