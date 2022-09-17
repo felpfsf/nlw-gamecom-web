@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import CreateAd from './components/createAd/CreateAd'
 import GameCard from './components/gameCard/GameCard'
 import logoNLW from '/assets/logo-nlw-esports.svg'
 import CreateAdModal from './components/modal/CreateAdModal'
+import Input from './components/form/Input'
+import Buttons from './components/ui/buttons/Buttons'
 
 interface IGame {
   id: string
@@ -16,8 +18,8 @@ interface IGame {
 
 function App() {
   const [games, setGames] = useState<IGame[]>([])
-
   const [search, setSearch] = useState('')
+  const [searchValue, setSearchValue] = useState('')
 
   useEffect(() => {
     fetch('http://localhost:3333/games')
@@ -28,7 +30,20 @@ function App() {
       .catch(err => console.error(err))
   }, [])
 
-  // console.log(search)
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      setSearch(searchValue)
+    }
+  }
+
+  const filteredGames = useMemo(() => {
+    if (search.length > 0) {
+      return games.filter(({ title }) =>
+        title.toLowerCase().includes(search.toLowerCase())
+      )
+    }
+    return games
+  }, [search, games])
 
   return (
     <div className='main__wrapper'>
@@ -36,34 +51,30 @@ function App() {
       <h1 className='main__title'>
         Seu <span>duo</span> está aqui
       </h1>
+      {/* className='w-1/2 text-black mt-8 p-2 rounded' */}
 
-      <input
-      className='w-1/2 text-black mt-8 p-2 rounded'
-        type='text'
-        placeholder='Busque seu jogo'
-        onChange={e => setSearch(e.target.value)}
-      />
+      <div className='mt-8 self-stretch flex items-center justify-center gap-4'>
+        <Input
+          style={{ width: '50%' }}
+          type='text'
+          placeholder='Busque seu jogo'
+          onChange={e => setSearchValue(e.target.value)}
+          onKeyPress={handleKeyPress}
+          value={searchValue}
+        />
+        <Buttons variant='pesquisar' onClick={() => setSearch(searchValue)} />
+      </div>
 
       {/* games grid */}
       <div className='grid__games'>
-        {games
-          .filter(value => {
-            if (search === '') {
-              return value
-            } else if (
-              value.title.toLowerCase().includes(search.toLowerCase())
-            ) {
-              return value
-            }
-          })
-          .map(game => (
-            <GameCard
-              key={game.id}
-              img={game.bannerUrl}
-              title={game.title}
-              ads={game._count.ads}
-            />
-          ))}
+        {filteredGames.map(game => (
+          <GameCard
+            key={game.id}
+            img={game.bannerUrl}
+            title={game.title}
+            ads={game._count.ads}
+          />
+        ))}
       </div>
 
       {/* Card publi */}
