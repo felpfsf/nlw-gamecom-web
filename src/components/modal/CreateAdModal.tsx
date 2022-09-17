@@ -46,15 +46,15 @@ const CreateAdModal = () => {
     const formData = new FormData(e.target as HTMLFormElement)
     const data = Object.fromEntries(formData)
 
-    console.log(`${httpRequest.defaults.baseURL}games/${data.game}/ads`)
+    // console.log(`${httpRequest.defaults.baseURL}games/${data.game}/ads`)
 
-    console.log(
-      `id: ${data.game}\n name: ${data.name}\n yearsPlaying: ${data.yearsPlaying}\n discord: ${data.discord}\n weekDay: ${weekDay}\n hourStart: ${data.hourStart}, hourEnd: ${data.hourEnd}\n typeof hourEnd: ${typeof(data.hourEnd)}\n useVoiceChannel: ${useVoiceChannel}`
-    )
+    // console.log(
+    //   `id: ${data.game}\n name: ${data.name}\n yearsPlaying: ${data.yearsPlaying}\n discord: ${data.discord}\n weekDay: ${weekDay}\n hourStart: ${data.hourStart}, hourEnd: ${data.hourEnd}\n typeof hourEnd: ${typeof(data.hourEnd)}\n useVoiceChannel: ${useVoiceChannel}`
+    // )
 
-    // if (!data.name) {
-    //   return
-    // }
+    if (!data.name) {
+      return
+    }
 
     try {
       axios.post(`${httpRequest.defaults.baseURL}games/${data.game}/ads`, {
