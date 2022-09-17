@@ -7,7 +7,7 @@ import * as Checkbox from '@radix-ui/react-checkbox'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import * as Select from '@radix-ui/react-select'
 
-import { CaretDown, Check } from 'phosphor-react'
+import { CaretDown, CaretUp, Check } from 'phosphor-react'
 
 import Input from '../form/Input'
 import Buttons from '../ui/buttons/Buttons'
@@ -98,16 +98,23 @@ const CreateAdModal = () => {
             {/* Select RadixUI option */}
 
             <Select.Root name='game'>
-              <Select.Trigger className='form__input flex items-center justify-between'>
-                <Select.Value placeholder='Selecione o game que deseja jogar' />
+              <Select.Trigger
+                aria-label='game'
+                className='form__input flex items-center justify-between'>
+                <Select.SelectValue placeholder='Selecione o game que deseja jogar' />
                 <Select.Icon>
-                  <CaretDown />
+                  <CaretDown
+                    size={20}
+                    className='hover:text-zinc-300 duration-200 ease-in'
+                  />
                 </Select.Icon>
               </Select.Trigger>
 
               <Select.Portal>
-                <Select.Content className='form__input'>
-                  <Select.ScrollUpButton />
+                <Select.Content className='form__input overflow-hidden'>
+                  <Select.ScrollUpButton className='text-zinc-100 mx-auto py-2'>
+                    <CaretUp size={20} />
+                  </Select.ScrollUpButton>
                   <Select.Viewport>
                     <Select.Group className='flex flex-col items-start'>
                       {games.map(game => {
@@ -125,7 +132,9 @@ const CreateAdModal = () => {
                       })}
                     </Select.Group>
                   </Select.Viewport>
-                  <Select.ScrollDownButton />
+                  <Select.ScrollDownButton>
+                    <CaretDown size={20} className='text-zinc-100 mx-auto py-2'/>
+                  </Select.ScrollDownButton>
                 </Select.Content>
               </Select.Portal>
             </Select.Root>

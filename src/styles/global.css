@@ -24,7 +24,7 @@
   }
 
   .card__game {
-    @apply relative rounded-lg overflow-hidden;
+    @apply relative rounded-lg ;
   }
 
   .card__game__content {
@@ -39,7 +39,7 @@
   }
 
   .card__publi__grad {
-    @apply mt-8 pt-1 self-stretch rounded-lg bg-nlw_gradient overflow-hidden;
+    @apply mt-8 pt-1 self-stretch rounded-lg bg-nlw_gradient ;
   }
 
   .card__publi {
