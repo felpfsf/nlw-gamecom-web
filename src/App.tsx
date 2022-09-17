@@ -27,7 +27,8 @@ function App() {
 
 
   useEffect(() => {
-    httpRequest.get('games')
+    httpRequest
+      .get('games')
       .then(response => setGames(response.data))
       .catch(err => console.error(err))
   }, [])
@@ -66,7 +67,6 @@ function App() {
         />
         <Buttons variant='pesquisar' onClick={() => setSearch(searchValue)} />
       </div>
-
       {/* games grid */}
       <div className='grid__games'>
         {filteredGames.map(game => (

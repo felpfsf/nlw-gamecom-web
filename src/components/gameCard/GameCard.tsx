@@ -1,3 +1,4 @@
+
 interface IGameCardProps {
   img: string
   title: string

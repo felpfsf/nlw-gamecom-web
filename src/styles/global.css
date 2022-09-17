@@ -6,25 +6,25 @@
 
 @layer base {
   body {
-    @apply font-sans text-neutral-200 bg-nlw-clr_background bg-bgImageGalaxy bg-cover bg-no-repeat;
+    @apply font-sans text-neutral-200 bg-nlw-clr_background bg-bgImageGalaxy bg-contain bg-no-repeat;
   }
 }
 
 @layer components {
   .main__wrapper {
-    @apply max-w-[1344px] my-20 mx-auto flex flex-col items-center;
+    @apply max-w-[1344px] my-20 p-2 mx-auto flex flex-col items-center;
   }
 
   .main__title {
-    @apply text-6xl font-black [&>*]:text-transparent [&>*]:bg-nlw_gradient [&>*]:bg-clip-text;
+    @apply text-3xl md:text-6xl font-black [&>*]:text-transparent [&>*]:bg-nlw_gradient [&>*]:bg-clip-text;
   }
 
   .grid__games {
-    @apply mt-8 grid grid-cols-6 gap-6;
+    @apply mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6;
   }
 
   .card__game {
-    @apply relative rounded-lg ;
+    @apply relative w-40 md:w-52 xl:w-full rounded-lg ;
   }
 
   .card__game__content {
@@ -54,7 +54,7 @@
   }
 
   .dialog__content {
-  @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] py-8 px-10 text-white rounded-lg bg-nlw-clr_pub_bg shadow-black/25;
+  @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[480px] py-8 px-10 text-white rounded-lg bg-nlw-clr_pub_bg shadow-black/25;
   }
 }
 
