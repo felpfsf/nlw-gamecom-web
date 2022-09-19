@@ -25,6 +25,8 @@ function App() {
   const [games, setGames] = useState<IGame[]>([])
   const [search, setSearch] = useState('')
   const [searchValue, setSearchValue] = useState('')
+  const slider = document.getElementById('sliderAction')
+
 
   useEffect(() => {
     httpRequest
@@ -49,15 +51,11 @@ function App() {
   }, [search, games])
 
   const slideLeft = () => {
-    const slider = document.getElementById('slider')
-    console.log('slide left', slider?.scrollLeft)
 
     slider!.scrollLeft = slider!.scrollLeft - 955
   }
 
   const slideRight = () => {
-    const slider = document.getElementById('slider')
-    console.log('slide left', slider?.scrollLeft)
 
     slider!.scrollLeft = slider!.scrollLeft + 955
   }
@@ -70,6 +68,7 @@ function App() {
       </h1>
       {/* className='w-1/2 text-black mt-8 p-2 rounded' */}
 
+      {/* Search bar */}
       <div className='mt-8 self-stretch flex items-center justify-center gap-4'>
         <Input
           style={{ width: '50%' }}
@@ -81,16 +80,18 @@ function App() {
         />
         <Buttons variant='pesquisar' onClick={() => setSearch(searchValue)} />
       </div>
+
+      {/* Games Row */}
       <div className='relative flex items-center group'>
         <CaretLeft
           onClick={slideLeft}
-          className='hidden absolute left-0 z-10 bg-violet-500 text-white rounded-full group-hover:block opacity-50 hover:opacity-100 cursor-pointer'
+          className='hidden absolute left-0 z-10 bg-nlw-clr_input_bg/80 text-white rounded-full group-hover:block opacity-50 hover:opacity-100 cursor-pointer'
           size={40}
         />
         {/* games grid */}
         <div
-          id='slider'
-          className='relative w-full h-full mt-8 whitespace-nowrap overflow-x-auto scroll-smooth scrollbar-hide'>
+          id='sliderAction'
+          className='mt-8 whitespace-nowrap overflow-x-auto scroll-smooth scrollbar-hide'>
           {filteredGames.map(game => (
             <GameCard
               key={game.id}
@@ -102,7 +103,7 @@ function App() {
         </div>
         <CaretRight
           onClick={slideRight}
-          className='hidden absolute right-0 z-10 bg-violet-500 text-white rounded-full group-hover:block opacity-50 hover:opacity-100 cursor-pointer'
+          className='hidden absolute right-0 z-10 bg-nlw-clr_input_bg/80 text-white rounded-full group-hover:block opacity-50 hover:opacity-100 cursor-pointer'
           size={40}
         />
       </div>
