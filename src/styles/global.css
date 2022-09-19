@@ -24,7 +24,7 @@
   }
 
   .card__game {
-    @apply relative w-40 md:w-52 xl:w-full rounded-lg ;
+    @apply relative ml-8 rounded-lg inline-block cursor-pointer;
   }
 
   .card__game__content {

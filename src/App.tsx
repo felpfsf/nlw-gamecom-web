@@ -4,6 +4,7 @@ import { httpRequest } from './api/api'
 import * as Dialog from '@radix-ui/react-dialog'
 
 import logoNLW from '/assets/logo-nlw-esports.svg'
+import { CaretLeft, CaretRight } from 'phosphor-react'
 
 import CreateAd from './components/createAd/CreateAd'
 import GameCard from './components/gameCard/GameCard'
@@ -24,7 +25,6 @@ function App() {
   const [games, setGames] = useState<IGame[]>([])
   const [search, setSearch] = useState('')
   const [searchValue, setSearchValue] = useState('')
-
 
   useEffect(() => {
     httpRequest
@@ -48,6 +48,20 @@ function App() {
     return games
   }, [search, games])
 
+  const slideLeft = () => {
+    const slider = document.getElementById('slider')
+    console.log('slide left', slider?.scrollLeft)
+
+    slider!.scrollLeft = slider!.scrollLeft - 955
+  }
+
+  const slideRight = () => {
+    const slider = document.getElementById('slider')
+    console.log('slide left', slider?.scrollLeft)
+
+    slider!.scrollLeft = slider!.scrollLeft + 955
+  }
+
   return (
     <div className='main__wrapper'>
       <img src={logoNLW} alt='' />
@@ -67,16 +81,30 @@ function App() {
         />
         <Buttons variant='pesquisar' onClick={() => setSearch(searchValue)} />
       </div>
-      {/* games grid */}
-      <div className='grid__games'>
-        {filteredGames.map(game => (
-          <GameCard
-            key={game.id}
-            img={game.bannerUrl}
-            title={game.title}
-            ads={game._count.ads}
-          />
-        ))}
+      <div className='relative flex items-center group'>
+        <CaretLeft
+          onClick={slideLeft}
+          className='hidden absolute left-0 z-10 bg-violet-500 text-white rounded-full group-hover:block opacity-50 hover:opacity-100 cursor-pointer'
+          size={40}
+        />
+        {/* games grid */}
+        <div
+          id='slider'
+          className='relative w-full h-full mt-8 whitespace-nowrap overflow-x-auto scroll-smooth scrollbar-hide'>
+          {filteredGames.map(game => (
+            <GameCard
+              key={game.id}
+              img={game.bannerUrl}
+              title={game.title}
+              ads={game._count.ads}
+            />
+          ))}
+        </div>
+        <CaretRight
+          onClick={slideRight}
+          className='hidden absolute right-0 z-10 bg-violet-500 text-white rounded-full group-hover:block opacity-50 hover:opacity-100 cursor-pointer'
+          size={40}
+        />
       </div>
 
       {/* Card publi */}
