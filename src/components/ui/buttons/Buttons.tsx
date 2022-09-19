@@ -19,13 +19,13 @@ const Buttons = (props: IButtonsProps) => {
       {props.variant === 'joystick' ? (
         <button type='submit' className='button button__violet font-semibold'>
           <img src={iconJoystick} alt='' />
-          Encontrar duo
+          Publicar duo
         </button>
       ) : null}
       {props.variant === 'cancelar' ? (
-        <button type='button' className='button button__zinc'>
+        <Dialog.DialogClose type='button' className='button button__zinc'>
           Cancelar
-        </button>
+        </Dialog.DialogClose>
       ) : null}
       {props.variant === 'pesquisar' ? (
         <button

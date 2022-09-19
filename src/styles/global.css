@@ -43,7 +43,7 @@
   }
 
   .card__publi {
-    @apply py-6 px-8 bg-nlw-clr_pub_bg flex items-center justify-between;
+    @apply py-6 px-8 bg-nlw-clr_pub_bg flex flex-wrap gap-4 items-center justify-between;
   }
 
   .card__publi__title {
@@ -54,13 +54,13 @@
   }
 
   .dialog__content {
-  @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[480px] py-8 px-10 text-white rounded-lg bg-nlw-clr_pub_bg shadow-black/25;
+  @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[480px] h-[600px] md:h-auto py-4 px-5 md:py-8 md:px-10 text-white rounded-lg bg-nlw-clr_pub_bg shadow-black/25;
   }
 }
 
 @layer utilities {
   .button {
-    @apply py-3 px-4 rounded-md flex gap-3;
+    @apply py-2 px-2 md:py-3 md:px-4 rounded-md flex gap-3;
   }
 
   .button__violet {
@@ -72,14 +72,22 @@
   }
 
   .form__input {
-    @apply text-sm text-nlw-clr_input_txt py-3 px-4 rounded bg-nlw-clr_input_bg placeholder:text-nlw-clr_input_txt;
+    @apply  text-xs md:text-sm text-nlw-clr_input_txt py-3 px-4 rounded bg-nlw-clr_input_bg placeholder:text-nlw-clr_input_txt;
   }
 
   .form__label {
-    @apply font-semibold;
+    @apply mt-4 md:mt-2 text-xs md:text-base font-semibold;
   }
 
   .input__div__flex {
   @apply flex flex-col gap-2;
+  }
+
+  .toggle__group__on {
+    @apply w-6 md:w-8 aspect-square text-xs md:text-base rounded-sm bg-violet-500;
+  }
+
+  .toggle__group__off {
+    @apply w-6 md:w-8 aspect-square text-xs md:text-base rounded-sm bg-zinc-900;
   }
 }

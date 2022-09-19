@@ -78,25 +78,31 @@ const CreateAdModal = () => {
       <Dialog.Overlay className='fixed inset-0 bg-black/60' />
 
       <Dialog.Content className='dialog__content'>
-        <Dialog.Title className='text-[32px] font-black'>
+        <Dialog.Title className='text-xl md:text-[32px] font-black'>
           Publique um Anúncio
         </Dialog.Title>
 
-        <form className='mt-8 flex flex-col gap-4' onSubmit={handleCreateAd}>
+        <form
+          className='mt-4 md:mt-8 flex flex-col md:gap-4'
+          onSubmit={handleCreateAd}>
           <div className='input__div__flex'>
-            <label htmlFor='game' className='font-semibold'>
+            <label
+              htmlFor='game'
+              className='form__label'>
               Qual o game?
             </label>
-            {/* <select name='game' id='game' className='form__input font-sans'>
+            {/* 
+            <select name='game' id='game' className='form__input font-sans'>
               <option disabled value=''>
                 Selecione
               </option>
               {games.map(game => {
                 return <option key={game.id} value={game.id}>{game.title}</option>
               })}
-            </select> */}
-            {/* Select RadixUI option */}
+            </select>
+             */}
 
+            {/* Select RadixUI option */}
             <Select.Root name='game'>
               <Select.Trigger
                 aria-label='game'
@@ -133,14 +139,19 @@ const CreateAdModal = () => {
                     </Select.Group>
                   </Select.Viewport>
                   <Select.ScrollDownButton>
-                    <CaretDown size={20} className='text-zinc-100 mx-auto py-2'/>
+                    <CaretDown
+                      size={20}
+                      className='text-zinc-100 mx-auto py-2'
+                    />
                   </Select.ScrollDownButton>
                 </Select.Content>
               </Select.Portal>
             </Select.Root>
           </div>
           <div className='input__div__flex'>
-            <label htmlFor='name' className='font-semibold'>
+            <label
+              htmlFor='name'
+              className='form__label'>
               Seu nome (ou nickname)
             </label>
             <Input
@@ -152,8 +163,10 @@ const CreateAdModal = () => {
 
           <div className='grid grid-cols-2 gap-6'>
             <div className='input__div__flex'>
-              <label htmlFor='yearsPlaying' className='font-semibold'>
-                Joga há quantos anos?
+              <label
+                htmlFor='yearsPlaying'
+                className='form__label'>
+                Anos jogando
               </label>
               <Input
                 name='yearsPlaying'
@@ -163,7 +176,9 @@ const CreateAdModal = () => {
               />
             </div>
             <div className='input__div__flex'>
-              <label htmlFor='discord' className='font-semibold'>
+              <label
+                htmlFor='discord'
+                className='form__label'>
                 Qual seu Discord?
               </label>
               <Input name='discord' id='discord' placeholder='Usuario#0000' />
@@ -172,19 +187,21 @@ const CreateAdModal = () => {
 
           <div className='flex gap-6'>
             <div className='input__div__flex'>
-              <label htmlFor='game' className='font-semibold'>
+              <label
+                htmlFor='game'
+                className='form__label'>
                 Quando costuma jogar?
               </label>
               <ToggleGroup.Root
-                className='pt-2 grid grid-cols-7 gap-1'
+                className='pt-2 grid grid-cols-4 md:grid-cols-4 gap-1'
                 type='multiple'
                 value={weekDay}
                 onValueChange={setWeekDay}>
                 <ToggleGroup.Item
                   className={
                     weekDay.includes('1')
-                      ? 'w-6 aspect-square text-sm rounded-sm bg-violet-500'
-                      : 'w-6 aspect-square text-sm rounded-sm bg-zinc-900'
+                      ? 'toggle__group__on'
+                      : 'toggle__group__off'
                   }
                   value='1'>
                   S
@@ -193,8 +210,8 @@ const CreateAdModal = () => {
                 <ToggleGroup.Item
                   className={
                     weekDay.includes('2')
-                      ? 'w-6 aspect-square text-sm rounded-sm bg-violet-500'
-                      : 'w-6 aspect-square text-sm rounded-sm bg-zinc-900'
+                      ? 'toggle__group__on'
+                      : 'toggle__group__off'
                   }
                   value='2'>
                   T
@@ -203,8 +220,8 @@ const CreateAdModal = () => {
                 <ToggleGroup.Item
                   className={
                     weekDay.includes('3')
-                      ? 'w-6 aspect-square text-sm rounded-sm bg-violet-500'
-                      : 'w-6 aspect-square text-sm rounded-sm bg-zinc-900'
+                      ? 'toggle__group__on'
+                      : 'toggle__group__off'
                   }
                   value='3'>
                   Q
@@ -213,8 +230,8 @@ const CreateAdModal = () => {
                 <ToggleGroup.Item
                   className={
                     weekDay.includes('4')
-                      ? 'w-6 aspect-square text-sm rounded-sm bg-violet-500'
-                      : 'w-6 aspect-square text-sm rounded-sm bg-zinc-900'
+                      ? 'toggle__group__on'
+                      : 'toggle__group__off'
                   }
                   value='4'>
                   Q
@@ -223,8 +240,8 @@ const CreateAdModal = () => {
                 <ToggleGroup.Item
                   className={
                     weekDay.includes('5')
-                      ? 'w-6 aspect-square text-sm rounded-sm bg-violet-500'
-                      : 'w-6 aspect-square text-sm rounded-sm bg-zinc-900'
+                      ? 'toggle__group__on'
+                      : 'toggle__group__off'
                   }
                   value='5'>
                   S
@@ -233,8 +250,8 @@ const CreateAdModal = () => {
                 <ToggleGroup.Item
                   className={
                     weekDay.includes('6')
-                      ? 'w-6 aspect-square text-sm rounded-sm bg-violet-500'
-                      : 'w-6 aspect-square text-sm rounded-sm bg-zinc-900'
+                      ? 'toggle__group__on'
+                      : 'toggle__group__off'
                   }
                   value='6'>
                   S
@@ -243,8 +260,8 @@ const CreateAdModal = () => {
                 <ToggleGroup.Item
                   className={
                     weekDay.includes('0')
-                      ? 'w-6 aspect-square text-sm rounded-sm bg-violet-500'
-                      : 'w-6 aspect-square text-sm rounded-sm bg-zinc-900'
+                      ? 'toggle__group__on'
+                      : 'toggle__group__off'
                   }
                   value='0'>
                   D
@@ -252,38 +269,46 @@ const CreateAdModal = () => {
               </ToggleGroup.Root>
             </div>
             <div className='flex flex-1 flex-col gap-2'>
-              <label htmlFor='hourStart' className='font-semibold'>
+              <label
+                htmlFor='hourStart'
+                className='form__label'>
                 Qual horário do dia?
               </label>
-              <div className='flex gap-2'>
-                <Input
-                  name='hourStart'
-                  id='hourStart'
-                  type='time'
-                  placeholder='De'
-                />
-                <Input
-                  name='hourEnd'
-                  id='hourEnd'
-                  type='time'
-                  placeholder='Até'
-                />
+              <div className='flex flex-col items-center gap-2'>
+                <div className='flex items-center gap-2'>
+                  <span className='text-xs md:text-base'>De</span>
+                  <Input
+                    name='hourStart'
+                    id='hourStart'
+                    type='time'
+                    placeholder='De'
+                  />
+                </div>
+                <div className='flex items-center gap-2'>
+                  <span className='text-xs md:text-base'>Até</span>
+                  <Input
+                    name='hourEnd'
+                    id='hourEnd'
+                    type='time'
+                    placeholder='Até'
+                  />
+                </div>
               </div>
             </div>
           </div>
 
-          <label className='mt-2 text-sm flex gap-2 cursor-pointer'>
+          <label className='mt-8 md:mt-2 text-xs md:text-sm flex items-center gap-2 cursor-pointer'>
             <Checkbox.Root
-              className='w-6 h-6 p-1 rounded bg-zinc-900'
+              className='relative w-4 md:w-6 aspect-square p-1 rounded bg-zinc-900'
               checked={useVoiceChannel}
               onCheckedChange={handleCheckbox}>
               <Checkbox.Indicator>
-                <Check className='w-4 h-4 text-emerald-400' />
+                <Check className='absolute top-1 left-0 w-4 md:w-6 aspect-square text-emerald-400' />
               </Checkbox.Indicator>
             </Checkbox.Root>
             Costumo me conectar ao chat de voz
           </label>
-          <footer className='mt-4 flex items-center justify-end gap-4'>
+          <footer className='mt-8 md:mt-4 flex items-center justify-end gap-4'>
             <Buttons variant='cancelar' />
             <Buttons variant='joystick' />
           </footer>
