@@ -82,7 +82,7 @@ function App() {
       <div className='relative flex items-center group'>
         <CaretLeft
           onClick={slideLeft}
-          className='hidden absolute left-0 z-10 bg-nlw-clr_input_bg/80 text-white rounded-full group-hover:block opacity-50 hover:opacity-100 cursor-pointer'
+          className='hidden absolute left-4 z-10 bg-nlw-clr_input_bg/80 text-white rounded-full group-hover:block opacity-50 hover:opacity-100 cursor-pointer'
           size={40}
         />
         {/* games grid */}
@@ -101,7 +101,7 @@ function App() {
         </div>
         <CaretRight
           onClick={slideRight}
-          className='hidden absolute right-0 z-10 bg-nlw-clr_input_bg/80 text-white rounded-full group-hover:block opacity-50 hover:opacity-100 cursor-pointer'
+          className='hidden absolute right-4 z-10 bg-nlw-clr_input_bg/80 text-white rounded-full group-hover:block opacity-50 hover:opacity-100 cursor-pointer'
           size={40}
         />
       </div>
