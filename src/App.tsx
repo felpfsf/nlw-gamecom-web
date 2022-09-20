@@ -27,7 +27,6 @@ function App() {
   const [searchValue, setSearchValue] = useState('')
   const slider = document.getElementById('sliderAction')
 
-
   useEffect(() => {
     httpRequest
       .get('games')
@@ -51,12 +50,10 @@ function App() {
   }, [search, games])
 
   const slideLeft = () => {
-
     slider!.scrollLeft = slider!.scrollLeft - 955
   }
 
   const slideRight = () => {
-
     slider!.scrollLeft = slider!.scrollLeft + 955
   }
 
@@ -95,6 +92,7 @@ function App() {
           {filteredGames.map(game => (
             <GameCard
               key={game.id}
+              id={game.id}
               img={game.bannerUrl}
               title={game.title}
               ads={game._count.ads}

@@ -24,7 +24,7 @@
   }
 
   .card__game {
-    @apply relative ml-8 rounded-lg inline-block cursor-pointer;
+    @apply relative ml-8 rounded-lg overflow-hidden inline-block cursor-pointer hover:scale-110 ease-in-out duration-200;
   }
 
   .card__game__content {
@@ -39,7 +39,7 @@
   }
 
   .card__publi__grad {
-    @apply mt-8 pt-1 self-stretch rounded-lg bg-nlw_gradient ;
+    @apply mt-8 pt-1 self-stretch rounded-lg bg-nlw_gradient;
   }
 
   .card__publi {
@@ -54,7 +54,7 @@
   }
 
   .dialog__content {
-  @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[480px] h-[600px] md:h-auto py-4 px-5 md:py-8 md:px-10 text-white rounded-lg bg-nlw-clr_pub_bg shadow-black/25;
+    @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[480px] h-[600px] md:h-auto py-4 px-5 md:py-8 md:px-10 text-white rounded-lg bg-nlw-clr_pub_bg shadow-black/25;
   }
 }
 
@@ -72,7 +72,7 @@
   }
 
   .form__input {
-    @apply  text-xs md:text-sm text-nlw-clr_input_txt py-3 px-4 rounded bg-nlw-clr_input_bg placeholder:text-nlw-clr_input_txt;
+    @apply text-xs md:text-sm text-nlw-clr_input_txt py-3 px-4 rounded bg-nlw-clr_input_bg placeholder:text-nlw-clr_input_txt;
   }
 
   .form__label {
@@ -80,7 +80,7 @@
   }
 
   .input__div__flex {
-  @apply flex flex-col gap-2;
+    @apply flex flex-col gap-2;
   }
 
   .toggle__group__on {
