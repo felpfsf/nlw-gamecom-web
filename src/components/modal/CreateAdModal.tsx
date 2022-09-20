@@ -11,6 +11,7 @@ import { CaretDown, CaretUp, Check } from 'phosphor-react'
 
 import Input from '../form/Input'
 import Buttons from '../ui/buttons/Buttons'
+import { toast, ToastContainer } from 'react-toastify'
 // import SelectGame from '../form/SelectGame'
 // import WeekDays from '../form/WeekDays'
 
@@ -40,7 +41,7 @@ const CreateAdModal = () => {
   }
 
   async function handleCreateAd(e: FormEvent) {
-    e.preventDefault()
+    // e.preventDefault()
     // console.log('form enviado')
 
     const formData = new FormData(e.target as HTMLFormElement)
@@ -86,9 +87,7 @@ const CreateAdModal = () => {
           className='mt-4 md:mt-8 flex flex-col md:gap-4'
           onSubmit={handleCreateAd}>
           <div className='input__div__flex'>
-            <label
-              htmlFor='game'
-              className='form__label'>
+            <label htmlFor='game' className='form__label'>
               Qual o game?
             </label>
             {/* 
@@ -149,9 +148,7 @@ const CreateAdModal = () => {
             </Select.Root>
           </div>
           <div className='input__div__flex'>
-            <label
-              htmlFor='name'
-              className='form__label'>
+            <label htmlFor='name' className='form__label'>
               Seu nome (ou nickname)
             </label>
             <Input
@@ -163,9 +160,7 @@ const CreateAdModal = () => {
 
           <div className='grid grid-cols-2 gap-6'>
             <div className='input__div__flex'>
-              <label
-                htmlFor='yearsPlaying'
-                className='form__label'>
+              <label htmlFor='yearsPlaying' className='form__label'>
                 Anos jogando
               </label>
               <Input
@@ -176,9 +171,7 @@ const CreateAdModal = () => {
               />
             </div>
             <div className='input__div__flex'>
-              <label
-                htmlFor='discord'
-                className='form__label'>
+              <label htmlFor='discord' className='form__label'>
                 Qual seu Discord?
               </label>
               <Input name='discord' id='discord' placeholder='Usuario#0000' />
@@ -187,9 +180,7 @@ const CreateAdModal = () => {
 
           <div className='flex gap-6'>
             <div className='input__div__flex'>
-              <label
-                htmlFor='game'
-                className='form__label'>
+              <label htmlFor='game' className='form__label'>
                 Quando costuma jogar?
               </label>
               <ToggleGroup.Root
@@ -269,9 +260,7 @@ const CreateAdModal = () => {
               </ToggleGroup.Root>
             </div>
             <div className='flex flex-1 flex-col gap-2'>
-              <label
-                htmlFor='hourStart'
-                className='form__label'>
+              <label htmlFor='hourStart' className='form__label'>
                 Qual horário do dia?
               </label>
               <div className='flex flex-col items-center gap-2'>
